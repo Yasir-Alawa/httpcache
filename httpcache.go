@@ -41,12 +41,13 @@ type Cache interface {
 
 // cacheKey returns the cache key for req.
 func cacheKey(req *http.Request) string {
-	tenant := r.Header.Get("X-Tenant")[0]
-	fmt.Print(tenant)
+	tenant := r.Header.Get("X-Tenant")
+	tenant := "tenant"
+	
 	if req.Method == http.MethodGet {
-		return tenant + "" + req.URL.String()
+		return tenant + "-" + req.URL.String()
 	} else {
-		return tenant + "" + req.Method + " " + req.URL.String()
+		return tenant + "-" + req.Method + " " + req.URL.String()
 	}
 }
 
