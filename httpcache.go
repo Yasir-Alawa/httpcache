@@ -40,6 +40,7 @@ type Cache interface {
 
 // cacheKey returns the cache key for req.
 func cacheKey(req *http.Request) string {
+	fmt.Println("------cacheKey-----------")
 	if req.Method == http.MethodGet {
 		return req.URL.String()
 	} else {
